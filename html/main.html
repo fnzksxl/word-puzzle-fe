@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>퍼즐 목록</title>
+  <link rel="stylesheet" href="../css/mainStyle.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>퍼즐 목록</h1>
+    </div>
+  </header>
+  <div class="user-info" id="user-info"></div>
+  <div id="puzzle-list"></div>
+  <div class="button-container">
+    <button id="load-more-button">더 보기</button>
+    <div class="dropdown">
+      <button id="create-puzzle-button">퍼즐 생성</button>
+      <div class="dropdown-content" id="dropdown-menu">
+        <a href="#" id="puzzle-size-7">7x7 사이즈</a>
+        <a href="#" id="puzzle-size-8">8x8 사이즈</a>
+        <a href="#" id="puzzle-size-9">9x9 사이즈</a>
+        <a href="#" id="puzzle-size-10">10x10 사이즈</a>
+      </div>
+    </div>
+    <button id="login-button" class="login-button">로그인</button>
+    <button id="logout-button" class="logout-button" style="display:none;">로그아웃</button>
+  </div>
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>

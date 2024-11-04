@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>퍼즐 보기</title>
+  <link rel="stylesheet" href="../css/puzzleStyle.css">
+</head>
+<body>
+  <table id="puzzle-table" border="1">
+      <tbody id="puzzle-body"></tbody>
+  </table>
+  <div class="answer-check-wrapper">
+    <button id="answer-check">
+      정답 확인
+    </button>
+  </div>
+  <div id="description-box" style="display: flex;">
+    <div id="across-descriptions" class="description-section" style="margin-right: 20px; flex: 1;">
+      <h2 style="text-align: center;">가로 설명</h2>
+    </div>
+    <div id="down-descriptions" class="description-section" style="flex: 1;">
+      <h2 style="text-align: center;">세로 설명</h2>
+    </div>
+  </div>
+  
+  <div id="result-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close-button" id="close-modal">&times;</span>
+      <h2>정답입니다!</h2>
+      <p>정답 확인이 완료되었습니다. 잘 하셨습니다!</p>
+      <div id="puzzle-name-container"></div>
+    </div>
+  </div>
+  
+  
+  <script type="module" src="../js/puzzle.js"></script>
+</body>
+</html>
