@@ -140,16 +140,18 @@ async function checkUser() {
           credentials: 'include',
       });
 
+      const userData = await response.json()
       if (response.ok) {
-          const userData = await response.json();
-          const loginButton = document.getElementById("login-button")
-          const logoutButton = document.getElementById("logout-button")
+          if (userData.id){
+            const loginButton = document.getElementById("login-button")
+            const logoutButton = document.getElementById("logout-button")
 
-          logoutButton.style.display = 'inline-block';
-          loginButton.style.display = 'none';
-          
-          displayUserInfo(userData.nickname, userData.solved);
-      }
+            logoutButton.style.display = 'inline-block';
+            loginButton.style.display = 'none';
+            
+            displayUserInfo(userData.nickname, userData.solved);
+          }
+        }
   } catch (error) {
       console.error("사용자 정보를 가져오는 데 실패했습니다:", error.message);
   }

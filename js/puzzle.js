@@ -21,8 +21,8 @@ async function showModal() {
     modalTitle.textContent = "정답입니다!!";
     modalMessage.textContent = "정답 확인이 완료되었습니다. 다른 퍼즐도 풀어보세요!";
     try {
-      const response = await fetch(`${BASE_URL}/api/v1/puzzle/search/${puzzleId}`, {
-        method: "GET",
+      const response = await fetch(`${BASE_URL}/api/v1/user/update/solved?puzzle_id=${puzzleId}`, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
@@ -32,6 +32,7 @@ async function showModal() {
       if (!response.ok) {
         throw new Error("퍼즐 데이터를 불러오는 데 실패했습니다.");
       }
+
     } catch (error) {
       console.log("풀이 퍼즐 수 증가 실패")
     }
@@ -56,9 +57,6 @@ function closeModal() {
 }
 
 document.getElementById("close-modal").addEventListener("click", closeModal);
-document.getElementById("restart-button").addEventListener("click", function() {
-  closeModal();
-});
 
 async function loadPuzzleDetails() {
   const puzzleId = getPuzzleIdFromURL();
@@ -103,6 +101,7 @@ function displayPuzzleMap(map) {
     for (let cellIndex = 0; cellIndex < map[rowIndex].length - 1; cellIndex++) {
       const td = document.createElement("td");
       
+      // td.textContent = map[rowIndex][cellIndex];
       td.setAttribute("data-row", rowIndex);
       td.setAttribute("data-col", cellIndex);
       
@@ -241,10 +240,11 @@ async function checkLogin() {
     },
     credentials: 'include'
   })
-  if (response.ok){
-    return true;
+  const data = await response.json()
+  if (data.id){
+    return true
   } else {
-    return false;
+    return false
   }
 }
 
